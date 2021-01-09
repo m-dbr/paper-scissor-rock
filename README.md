@@ -56,5 +56,7 @@ $ python3 -m unittest tests.TestGame
     * _test_check_result_player1_losses_
     * _test_check_result_player1_ties_
 * tests whether _play_ngames_ function works correctly:
-    * ???
+    * _test_play_ngames_player1_wins_
+    * _test_play_ngames_player1_losses_
+    * test_play_ngames_player1_ties_
 

@@ -1,3 +1,5 @@
+import sys
+
 import paper_scissor_rock
 
 if __name__ == "__main__":
@@ -11,9 +13,22 @@ if __name__ == "__main__":
     #     "losses": 0,
     # }
     # player1 = options['scissors']
-    while True:
+
         # Below example of using with player1 fixed
         # game.play_ngames(n=5, random_pl1=False, player1=options["rock"])
+
+    while True:
         result = game.play_ngames()
         game.print_score(result)
-        game.play_again()
+
+        while True:
+            user_input = input('\nDo you wish to play again? (y/n): ').lower()
+            if user_input == 'n':
+                sys.exit("Exit the game")
+            elif user_input == 'y':
+                break
+            else:
+                print("Invalid input!\n")
+                continue
+
+

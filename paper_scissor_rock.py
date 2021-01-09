@@ -1,5 +1,5 @@
 import random
-
+import sys
 
 class RockPaperScissors:
     """
@@ -66,18 +66,3 @@ class RockPaperScissors:
             self.check_result(player1, result_dict_updated)
 
         return result_dict_updated
-
-    def play_again(self) -> None:
-        """
-        Ask whether player wants to play again or exit the game.
-        """
-        while True:
-            continue_prompt = input('\nDo you wish to play again? (y/n): ').lower()
-            if continue_prompt == 'n':
-                print("Exit the game")
-                exit()
-            elif continue_prompt == 'y':
-                break
-            else:
-                print("Invalid input!\n")
-                continue

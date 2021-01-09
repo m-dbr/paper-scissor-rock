@@ -1,11 +1,12 @@
 import unittest
+from unittest.mock import patch
+
 import paper_scissor_rock
 
 
 class TestGame(unittest.TestCase):
 
     def setUp(self):
-        print('setUp executed')
         self.options = {'rock': 0, 'paper': 1, 'scissors': 2}
         self.game = paper_scissor_rock.RockPaperScissors()
         self.test_dict = {
@@ -15,7 +16,6 @@ class TestGame(unittest.TestCase):
         }
 
     def tearDown(self):
-        print('tearDown executed')
         del self.game
 
     def test_random_choice(self):
