@@ -1,6 +1,5 @@
 import paper_scissor_rock
 
-
 if __name__ == "__main__":
     options = {'rock': 0, 'paper': 1, 'scissors': 2}
     player2 = options['paper']

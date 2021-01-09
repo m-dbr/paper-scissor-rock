@@ -1,7 +1,7 @@
 import random
 
 
-def random_choice(options) -> str:
+def random_choice(options):
     """
     Chooses a choice randomly from the keys in options.
     :returns: String containing the choice of the computer.
