@@ -1,5 +1,5 @@
 import random
-import sys
+
 
 class RockPaperScissors:
     """
@@ -7,7 +7,7 @@ class RockPaperScissors:
     with n rounds.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initialize the variables for the class
         """
