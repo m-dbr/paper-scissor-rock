@@ -4,13 +4,16 @@ import paper_scissor_rock
 
 class TestGame(unittest.TestCase):
 
-    def setUp(self):
+    def setUp(self) -> None:
         self.options = {'rock': 0, 'paper': 1, 'scissors': 2}
         self.test_dict = {
             "ties": 0,
             "wins": 0,
             "losses": 0,
         }
+
+    def tearDown(self) -> None:
+        pass
 
     def test_random_choice(self):
         choice = paper_scissor_rock.random_choice(self.options)
