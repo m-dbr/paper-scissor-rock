@@ -20,7 +20,7 @@ $ python3 main.py
 
 default values:
 * player2 chose only paper,
-* player1 (computer) randomly chose other possibilites,
+* player1 (computer) randomly choosses other possibilites,
 * number of games: 100.
 
 The output of the game should looks like:
