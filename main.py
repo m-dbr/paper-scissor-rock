@@ -1,14 +1,18 @@
 import paper_scissor_rock
 
 if __name__ == "__main__":
-    options = {'rock': 0, 'paper': 1, 'scissors': 2}
-    player2 = options['paper']
-    # random_pl1 when True: player1 is randomly chosen, when False player1 have to bo set in play_ngames function
-    # player1= options['rock']
-    random_pl1 = True
-    n = 2
 
+    game = paper_scissor_rock.RockPaperScissors()
+    # options needed to RockPaperScissors instance with parameters
+    # options = {'rock': 0, 'paper': 1, 'scissors': 2}
+    # test_dict = {
+    #     "ties": 0,
+    #     "wins": 0,
+    #     "losses": 0,
+    # }
+    # player1 = options['scissors']
     while True:
-        paper_scissor_rock.play_ngames(options, player2, n, random_pl1)
-        # paper_scissor_rock.play_ngames(options, player2, n, random_pl1, player1)
-        paper_scissor_rock.play_again()
+        # Below example of using with player1 fixed
+        # game.play_ngames(n=5, random_pl1=False, player1=options["rock"])
+        game.play_ngames()
+        game.play_again()

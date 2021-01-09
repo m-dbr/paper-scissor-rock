@@ -43,7 +43,7 @@ Simple unittests were written to test Paper-Scissor-Rock console game code.
 In order to run unittests type:
 
 ```
-python3 -m unittest tests.TestGame
+$ python3 -m unittest tests.TestGame
 ```
 
 ##### list of tests:

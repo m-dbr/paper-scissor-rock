@@ -1,73 +1,83 @@
 import random
 
 
-def random_choice(options) -> str:
+class RockPaperScissors:
     """
-    Chooses a choice randomly from the keys in options.
-    :returns: String containing the choice of the computer.
+    Class to handle an instance of a Rock-Paper-Scissors game
+    with n rounds.
     """
-    choices = list(options.keys())
-    return random.choice(choices)
 
+    def __init__(self):
+        """
+        Initialize the variables for the class
+        """
+        self.options = {'rock': 0, 'paper': 1, 'scissors': 2}
+        self.player2 = self.options['paper']
+        self.outcome_dict = {
+            "ties": 0,
+            "wins": 0,
+            "losses": 0,
+        }
 
-def check_result(player1, player2, result_dict) -> dict:
-    """
-    Check the result of the game: whether player1 wins or loose or ties with computer
-    :returns: Dictionary containing the possible results.
-    """
-    result = (player1 - player2) % 3
-    if result == 0:
-        result_dict['ties'] += 1
-    elif result == 1:
-        result_dict['wins'] += 1
-    elif result == 2:
-        result_dict['losses'] += 1
-    return result_dict
+    def random_choice(self) -> str:
+        """
+        Chooses a choice randomly from the keys in options.
+        :returns: String containing the choice of the computer.
+        """
+        choices = list(self.options.keys())
+        return random.choice(choices)
 
+    def check_result(self, player1: int, result_dict: dict) -> dict:
+        """
+        Check the result of the game: whether player1 wins or loose or ties with computer
+        :returns: Dictionary containing the possible results.
+        """
+        result = (player1 - self.player2) % 3
 
-def print_score(result_dict) -> None:
-    """
-    Print the score of the play depending of the data stored in result_dict dictionary.
-    """
-    print('-------- GAME OVER --------')
-    print(f"Player A (computer) wins {result_dict['wins']} times")
-    print(f"Player B (player paper) wins {result_dict['losses']} times")
-    print(f"Tie: {result_dict['ties']} of 100 games")
-    print(f"Winner is: {'Player A' if result_dict['wins'] > result_dict['losses'] else 'Player B'}")
-    print('--------------------')
+        if result == 0:
+            result_dict['ties'] += 1
+        elif result == 1:
+            result_dict['wins'] += 1
+        elif result == 2:
+            result_dict['losses'] += 1
+        return result_dict
 
+    def print_score(self, result_dict: dict) -> None:
+        """
+        Print the score of the play depending of the data stored in result_dict dictionary.
+        """
+        print('-------- GAME OVER --------')
+        print(f"Player A (computer) wins {result_dict['wins']} times")
+        print(f"Player B (player paper) wins {result_dict['losses']} times")
+        print(f"Tie: {result_dict['ties']} of 100 games")
+        print(f"Winner is: {'Player A' if result_dict['wins'] > result_dict['losses'] else 'Player B'}")
+        print('--------------------')
 
-def play_ngames(options, player2, n, random_pl1=True, player1=None) -> None:
-    """
-    Play n games, check result of each game and update result_dict
-    :returns: Dictionary containing the final scores of each n games.
-    """
-    outcome_dict = {
-        "ties": 0,
-        "wins": 0,
-        "losses": 0,
-    }
-    result_dict = outcome_dict.copy()
+    def play_ngames(self, n=100, random_pl1=True, player1=None) -> None:
+        """
+        Play n games, check result of each game and update result_dict
+        :returns: Dictionary containing the final scores of each n games.
+        """
+        result_dict = self.outcome_dict.copy()
 
-    for i in range(n):
-        if random_pl1 is True:
-            player1 = options[random_choice(options)]
-        check_result(player1, player2, result_dict)
+        for i in range(n):
+            if random_pl1 is True:
+                player1 = self.options[self.random_choice()]
+            self.check_result(player1, result_dict)
 
-    print_score(result_dict)
+        self.print_score(result_dict)
 
-
-def play_again() -> None:
-    """
-    Ask whether player wants to play again or exit the game.
-    """
-    while True:
-        continue_prompt = input('\nDo you wish to play again? (y/n): ').lower()
-        if continue_prompt == 'n':
-            print("Exit the game")
-            exit()
-        elif continue_prompt == 'y':
-            break
-        else:
-            print("Invalid input!\n")
-            continue
+    def play_again(self) -> None:
+        """
+        Ask whether player wants to play again or exit the game.
+        """
+        while True:
+            continue_prompt = input('\nDo you wish to play again? (y/n): ').lower()
+            if continue_prompt == 'n':
+                print("Exit the game")
+                exit()
+            elif continue_prompt == 'y':
+                break
+            else:
+                print("Invalid input!\n")
+                continue
