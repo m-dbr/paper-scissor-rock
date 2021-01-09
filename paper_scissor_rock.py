@@ -53,19 +53,19 @@ class RockPaperScissors:
         print(f"Winner is: {'Player A' if result_dict['wins'] > result_dict['losses'] else 'Player B'}")
         print('--------------------')
 
-    def play_ngames(self, n=100, random_pl1=True, player1=None) -> None:
+    def play_ngames(self, n=100, random_pl1=True, player1=None) -> dict:
         """
         Play n games, check result of each game and update result_dict
         :returns: Dictionary containing the final scores of each n games.
         """
-        result_dict = self.outcome_dict.copy()
+        result_dict_updated = self.outcome_dict.copy()
 
         for i in range(n):
             if random_pl1 is True:
                 player1 = self.options[self.random_choice()]
-            self.check_result(player1, result_dict)
+            self.check_result(player1, result_dict_updated)
 
-        self.print_score(result_dict)
+        return result_dict_updated
 
     def play_again(self) -> None:
         """

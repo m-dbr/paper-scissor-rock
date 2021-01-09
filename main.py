@@ -14,5 +14,6 @@ if __name__ == "__main__":
     while True:
         # Below example of using with player1 fixed
         # game.play_ngames(n=5, random_pl1=False, player1=options["rock"])
-        game.play_ngames()
+        result = game.play_ngames()
+        game.print_score(result)
         game.play_again()

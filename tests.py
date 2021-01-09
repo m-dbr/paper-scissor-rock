@@ -5,6 +5,7 @@ import paper_scissor_rock
 class TestGame(unittest.TestCase):
 
     def setUp(self):
+        print('setUp executed')
         self.options = {'rock': 0, 'paper': 1, 'scissors': 2}
         self.game = paper_scissor_rock.RockPaperScissors()
         self.test_dict = {
@@ -14,7 +15,8 @@ class TestGame(unittest.TestCase):
         }
 
     def tearDown(self):
-        pass
+        print('tearDown executed')
+        del self.game
 
     def test_random_choice(self):
         """
@@ -79,36 +81,40 @@ class TestGame(unittest.TestCase):
         """
         :return: True if player1 wins 100 times and dict like {"ties": 0, "wins": 100, "losses": 0}
         """
-        player1 = self.options['scissors']
-        paper_scissor_rock.play_ngames(self.options, self.player2, self.n, self.random_pl1, player1)
+        player1 = self.options["scissors"]
+        random_pl1 = False
+        n = 100
+        result = self.game.play_ngames(n, random_pl1, player1)
 
-        # self.assertEqual(self.options['paper'], self.player2)
-        # self.assertIn(player1, list(self.options.values()))
-        # self.assertIn(self.player2, list(self.options.values()))
-        # self.assertDictEqual(result, {"ties": 0, "wins": 100, "losses": 0})
+        self.assertEqual(self.options['scissors'], player1)
+        self.assertIn(player1, list(self.options.values()))
+        self.assertDictEqual(result, {"ties": 0, "wins": 100, "losses": 0})
 
-    # def test_play_ngames_player1_losses(self):
-    #     """
-    #     :return: True if player1 losses 100 times and dict like {"ties": 0, "wins": 0, "losses": 100}
-    #     """
-    #     player1 = self.options['rock']
-    #     result = paper_scissor_rock.play_ngames(self.options, self.player2, self.n, self.random_pl1, player1)
-    #     self.assertEqual(self.options['rock'], self.player2)
-    #     self.assertIn(player1, list(self.options.values()))
-    #     self.assertIn(self.player2, list(self.options.values()))
-    #     self.assertDictEqual(result, {"ties": 0, "wins": 0, "losses": 100})
-    #
-    # def test_play_ngames_player1_ties(self):
-    #     """
-    #     :return: True if player1 ties 100 times and dict like {"ties": 100, "wins": 0, "losses": 0}
-    #     """
-    #     player1 = self.options['paper']
-    #     result = paper_scissor_rock.play_ngames(self.options, self.player2, self.n, self.random_pl1, player1)
-    #     self.assertEqual(self.options['paper'], self.player2)
-    #     self.assertIn(player1, list(self.options.values()))
-    #     self.assertIn(self.player2, list(self.options.values()))
-    #     self.assertDictEqual(result, {"ties": 100, "wins": 0, "losses": 0})
-    #
+    def test_play_ngames_player1_losses(self):
+        """
+        :return: True if player1 losses 100 times and dict like {"ties": 0, "wins": 0, "losses": 100}
+        """
+        player1 = self.options['rock']
+        random_pl1 = False
+        n = 100
+        result = self.game.play_ngames(n, random_pl1, player1)
+
+        self.assertEqual(self.options['rock'], player1)
+        self.assertIn(player1, list(self.options.values()))
+        self.assertDictEqual(result, {"ties": 0, "wins": 0, "losses": 100})
+
+    def test_play_ngames_player1_ties(self):
+        """
+        :return: True if player1 ties 100 times and dict like {"ties": 100, "wins": 0, "losses": 0}
+        """
+        player1 = self.options['paper']
+        random_pl1 = False
+        n = 100
+        result = self.game.play_ngames(n, random_pl1, player1)
+
+        self.assertEqual(self.options['paper'], player1)
+        self.assertIn(player1, list(self.options.values()))
+        self.assertDictEqual(result, {"ties": 100, "wins": 0, "losses": 0})
 
 
 if __name__ == '__main__':
